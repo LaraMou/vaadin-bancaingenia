@@ -16,11 +16,9 @@ import java.util.List;
 
 @Entity
 @Table(name="usuario")
-public class Usuario {
+public class Usuario extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
     @Column(nullable = false,unique = true)
     private String nif;
@@ -88,7 +86,7 @@ public class Usuario {
     @JoinTable(
             name = "usuario_cuenta",
             joinColumns = {@JoinColumn(name="usuario_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name="cuenta_id", referencedColumnName = "numerocuenta")}
+            inverseJoinColumns = {@JoinColumn(name="cuenta_id", referencedColumnName = "id")}
     )
     @JsonIgnoreProperties("usuarios")
     private List<Cuenta> cuentas = new ArrayList<>();
@@ -107,13 +105,7 @@ public class Usuario {
         this.interviniente = interviniente;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNif() {
         return nif;

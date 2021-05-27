@@ -8,10 +8,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-public class Tarjeta {
+public class Tarjeta extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name="numero_tarjeta")
     private Long numeroTarjeta;
 

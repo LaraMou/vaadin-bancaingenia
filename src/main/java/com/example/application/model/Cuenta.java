@@ -11,9 +11,8 @@ import java.util.List;
 
 
 @Entity
-public class Cuenta {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Cuenta extends AbstractEntity {
+
     @Column(length=10)
     private Long numerocuenta;
     //datos cuenta IBAN

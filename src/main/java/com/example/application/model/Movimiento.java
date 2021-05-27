@@ -8,11 +8,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class Movimiento {
+public class Movimiento extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
     @Column(name="importe" , nullable = false)
     private Double importe;
@@ -56,13 +54,6 @@ public class Movimiento {
         this.concepto = concepto;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Double getImporte() {
         return importe;
@@ -131,15 +122,10 @@ public class Movimiento {
     @Override
     public String toString() {
         return "Movimiento{" +
-                "id=" + id +
-                ", importe=" + importe +
-                ", fecha=" + fecha +
+                "importe=" + importe +
                 ", fechaValor=" + fechaValor +
                 ", descripcion='" + descripcion + '\'' +
                 ", concepto='" + concepto + '\'' +
-                ", categoria=" + categoria +
-                ", cuenta=" + cuenta +
-                ", tarjeta=" + tarjeta +
                 '}';
     }
 }

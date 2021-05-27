@@ -7,11 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Categoria {
+public class Categoria extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
     @Column(name = "nombre" , nullable = false, unique = true)
     private String nombre;
@@ -28,13 +26,7 @@ public class Categoria {
         this.nombre = nombre;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -52,11 +44,11 @@ public class Categoria {
 //        this.movimientos = movimientos;
 //    }
 
+
     @Override
     public String toString() {
         return "Categoria{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
+                "nombre='" + nombre + '\'' +
                 '}';
     }
 }
