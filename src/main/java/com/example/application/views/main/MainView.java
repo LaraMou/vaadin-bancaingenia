@@ -41,6 +41,7 @@ public class MainView extends AppLayout {
         addToNavbar(true, createHeaderContent());
         menu = createMenu();
         addToDrawer(createDrawerContent(menu));
+
     }
 
     private Component createHeaderContent() {
@@ -73,6 +74,7 @@ public class MainView extends AppLayout {
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
         logoLayout.add(new Image("images/logo1.png", "IngeniaBANK logo"));
         layout.add(logoLayout, menu);
+
         return layout;
     }
 

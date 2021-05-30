@@ -7,9 +7,11 @@ import com.github.appreciated.card.ClickableCard;
 import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.card.label.PrimaryLabel;
 import com.github.appreciated.card.label.TitleLabel;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -44,37 +46,50 @@ public class InicioView extends VerticalLayout {
     );
 
     ClickableCard ccard = new ClickableCard(
-            onClick -> {/* Handle Card click */},
+            onClick -> {
+                UI.getCurrent().navigate("tarjetas");},
             new TitleLabel("Example Title") // Follow up with more Components ...
     );
 
-    Card card = new Card(
+    ClickableCard card = new  ClickableCard(
+
             // if you don't want the title to wrap you can set the whitespace = nowrap
-            new TitleLabel("BBVA").withWhiteSpaceNoWrap(),
-            new TitleLabel("10354,52 €").withWhiteSpaceNoWrap(),
+            onClick -> {
+                UI.getCurrent().navigate("Movimientos");},
+            new Image("images/bbva.png", "BBVA logo"),
+            new TitleLabel("10354,52 €                         ").withWhiteSpaceNoWrap(),
+            new PrimaryLabel("Some primary text")
+
+    );
+
+    ClickableCard card2 = new  ClickableCard (
+            onClick -> {
+                UI.getCurrent().navigate("Movimientos");},
+            new Image("images/bbva.png", "BBVA logo"),
+            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
             new PrimaryLabel("Some primary text")
     );
 
-    Card card2 = new Card (
-            new TitleLabel("BBVA").withWhiteSpaceNoWrap(),
-            new TitleLabel("10354,52€").withWhiteSpaceNoWrap(),
+    ClickableCard card3 = new  ClickableCard (
+            onClick -> {
+                UI.getCurrent().navigate("Movimientos");},
+            new Image("images/bbva.png", "BBVA logo"),
+            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
+            new PrimaryLabel("Some primary text")
+    );
+    ClickableCard card4 = new  ClickableCard(
+            onClick -> {
+                UI.getCurrent().navigate("Movimientos");},
+            new Image("images/bbva.png", "BBVA logo"),
+            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
             new PrimaryLabel("Some primary text")
     );
 
-    Card card3 = new Card (
-            new TitleLabel("BBVA").withWhiteSpaceNoWrap(),
-            new TitleLabel("10354,52€").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
-    );
-    Card card4 = new Card (
-            new TitleLabel("BBVA").withWhiteSpaceNoWrap(),
-            new TitleLabel("10354,52€").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
-    );
-
-    Card card5 = new Card (
-            new TitleLabel("BBVA").withWhiteSpaceNoWrap(),
-            new TitleLabel("10354,52€").withWhiteSpaceNoWrap(),
+    ClickableCard card5 = new  ClickableCard (
+            onClick -> {
+                UI.getCurrent().navigate("Movimientos");},
+            new Image("images/bbva.png", "BBVA logo"),
+            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
             new PrimaryLabel("Some primary text")
     );
 
@@ -96,11 +111,11 @@ public class InicioView extends VerticalLayout {
         grid.getColumnByKey("fechaValor").setHeader("Fecha");
         grid.setWidthFull();
 
+        card.setMinWidth("50px");
         HorizontalLayout layout = new HorizontalLayout();
         add(new H1("Tarjetas"));
         add(new Hr());
         layout.add(card, card2, card3,card4, card5);
-        card4.setVisible(false);
 // shorthand methods for changing the component theme variants
         layout.setPadding(false);
         layout.setMargin(true);
