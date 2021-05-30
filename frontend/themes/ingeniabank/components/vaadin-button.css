@@ -8,10 +8,13 @@
 }
 :host([focus-ring]:not([theme~="tertiary"])) {
   box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct), inset 0 0 0 1px var(--lumo-primary-color);
+  background-color: #42446E;
 }
 :host([focus-ring][theme~="primary"]) {
   box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct), inset 0 0 0 1px var(--lumo-primary-contrast-color);
+  background-color:#42446E;
 }
 :host([theme~="primary"]) {
   text-shadow: 0 -1px 0 var(--lumo-shade-20pct);
+  background-color:#42446E;
 }
