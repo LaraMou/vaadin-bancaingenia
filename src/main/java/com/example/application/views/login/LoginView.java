@@ -3,6 +3,7 @@ package com.example.application.views.login;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -27,6 +28,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         add(new Image("images/logo1.png", "IngeniaBANK logo"));
         add(loginForm);
         add(new H3("Usuario: admin - Password: password"));
+        add(new H4("(expira en 5 minutos)"));
 	}
 		
     @Override

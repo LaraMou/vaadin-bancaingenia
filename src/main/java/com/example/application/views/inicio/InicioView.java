@@ -7,7 +7,9 @@ import com.github.appreciated.card.ClickableCard;
 import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.card.label.PrimaryLabel;
 import com.github.appreciated.card.label.TitleLabel;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Hr;
@@ -40,8 +42,8 @@ public class InicioView extends VerticalLayout {
 
     private MovimientoService movimientoService;
 
-    RippleClickableCard rcard = new RippleClickableCard(
-            onClick -> {/* Handle Card click */},
+  /*  RippleClickableCard rcard = new RippleClickableCard(
+            onClick -> {*//* Handle Card click *//*},
             new TitleLabel("Example Title") // Follow up with more Components ...
     );
 
@@ -49,16 +51,22 @@ public class InicioView extends VerticalLayout {
             onClick -> {
                 UI.getCurrent().navigate("tarjetas");},
             new TitleLabel("Example Title") // Follow up with more Components ...
-    );
+    );*/
 
     ClickableCard card = new  ClickableCard(
 
-            // if you don't want the title to wrap you can set the whitespace = nowrap
+
             onClick -> {
-                UI.getCurrent().navigate("Movimientos");},
+                Dialog dialog = new Dialog();
+                dialog.add(new H1("Lista de movimientos de la tarjeta"));
+                dialog.setWidth("1366px");
+                dialog.setHeight("766px");
+                dialog.open();
+                ;},
+
             new Image("images/bbva.png", "BBVA logo"),
             new TitleLabel("10354,52 €                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
+            new PrimaryLabel("****3331")
 
     );
 
@@ -67,7 +75,7 @@ public class InicioView extends VerticalLayout {
                 UI.getCurrent().navigate("Movimientos");},
             new Image("images/bbva.png", "BBVA logo"),
             new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
+            new PrimaryLabel("**** 4441")
     );
 
     ClickableCard card3 = new  ClickableCard (
@@ -75,14 +83,14 @@ public class InicioView extends VerticalLayout {
                 UI.getCurrent().navigate("Movimientos");},
             new Image("images/bbva.png", "BBVA logo"),
             new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
+            new PrimaryLabel("**** 5551")
     );
     ClickableCard card4 = new  ClickableCard(
             onClick -> {
                 UI.getCurrent().navigate("Movimientos");},
             new Image("images/bbva.png", "BBVA logo"),
             new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
+            new PrimaryLabel("**** 2221")
     );
 
     ClickableCard card5 = new  ClickableCard (
@@ -90,7 +98,7 @@ public class InicioView extends VerticalLayout {
                 UI.getCurrent().navigate("Movimientos");},
             new Image("images/bbva.png", "BBVA logo"),
             new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("Some primary text")
+            new PrimaryLabel("**** 1111")
     );
 
 
@@ -101,7 +109,7 @@ public class InicioView extends VerticalLayout {
         this.movimientoService = movimientoService;
         this.movimientosList= movimientoService.findMovimientos();
         loadGrid();
-
+        createDialog();
 
 
         grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
@@ -111,15 +119,15 @@ public class InicioView extends VerticalLayout {
         grid.getColumnByKey("fechaValor").setHeader("Fecha");
         grid.setWidthFull();
 
-        card.setMinWidth("50px");
+
         HorizontalLayout layout = new HorizontalLayout();
         add(new H1("Tarjetas"));
         add(new Hr());
         layout.add(card, card2, card3,card4, card5);
-// shorthand methods for changing the component theme variants
+
         layout.setPadding(false);
         layout.setMargin(true);
-// just a demonstration of the API, by default the spacing is on
+
         layout.setSpacing(true);
 
         add(layout);
@@ -141,4 +149,13 @@ public class InicioView extends VerticalLayout {
         grid.setDataProvider(movimientosProvider);
     }
 
+    private void createDialog(){
+        Dialog dialog = new Dialog();
+        dialog.add(new Text("Close me with the esc-key or an outside click"));
+
+        dialog.setWidth("400px");
+        dialog.setHeight("150px");
+
+
+    }
 }

@@ -41,6 +41,7 @@ public class MovimientosView extends HorizontalLayout {
 
         grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
 //        grid.addColumn(movimiento -> hideCardNumber(movimiento.getTarjeta().toString())).setHeader("Tarjeta");
+
         grid.getColumnByKey("tarjeta.id").setHeader("Tarjeta");
         grid.getColumnByKey("importe").setHeader("Importe");
         grid.getColumnByKey("concepto").setHeader("Concepto");

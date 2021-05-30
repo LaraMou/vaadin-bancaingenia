@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 @Route(value = "Cuentas", layout = MainView.class)
 @PageTitle("Bienvenido/a a tu banca")
-public class CuentasView extends Div  {
+public class CuentasView extends HorizontalLayout  {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final int NOTIFICATION_DEFAULT_DURATION = 5000;
     List<Cuenta> cuentasList;
