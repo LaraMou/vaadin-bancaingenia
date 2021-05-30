@@ -35,11 +35,11 @@ public class Movimiento extends AbstractEntity {
      private Categoria categoria;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "numerocuenta")
+    @JoinColumn(name = "id_cuenta")
     private Cuenta cuenta;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "numerotarjeta")
+    @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
 
 
