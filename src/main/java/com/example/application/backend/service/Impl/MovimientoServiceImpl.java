@@ -3,7 +3,7 @@ package com.example.application.backend.service.Impl;
 
 import com.example.application.backend.dao.MovimientoDAO;
 import com.example.application.backend.service.MovimientoService;
-import com.example.application.model.Movimiento;
+import com.example.application.backend.model.Movimiento;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

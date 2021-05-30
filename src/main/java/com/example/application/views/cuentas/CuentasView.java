@@ -1,21 +1,13 @@
 package com.example.application.views.cuentas;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.example.application.backend.service.CuentaService;
 import com.example.application.backend.service.MovimientoService;
 import com.example.application.components.CardCuenta;
-import com.example.application.model.Cuenta;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.grid.GridVariant;
+import com.example.application.backend.model.Cuenta;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.IronIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.AfterNavigationEvent;
-import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.example.application.views.main.MainView;

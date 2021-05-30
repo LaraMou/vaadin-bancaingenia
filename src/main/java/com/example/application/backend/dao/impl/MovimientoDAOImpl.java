@@ -3,7 +3,7 @@ package com.example.application.backend.dao.impl;
 import com.example.application.backend.dao.MovimientoDAO;
 
 import com.example.application.backend.repository.MovimientoRepository;
-import com.example.application.model.Movimiento;
+import com.example.application.backend.model.Movimiento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

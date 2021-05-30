@@ -2,15 +2,12 @@ package com.example.application.components;
 
 import com.example.application.backend.service.CuentaService;
 import com.example.application.backend.service.MovimientoService;
-import com.example.application.model.Cuenta;
+import com.example.application.backend.model.Cuenta;
 import com.github.appreciated.card.ClickableCard;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.RouterLink;
 
 import java.util.Locale;
 

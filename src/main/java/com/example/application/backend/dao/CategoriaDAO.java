@@ -4,7 +4,7 @@ package com.example.application.backend.dao;
 
 
 
-import com.example.application.model.Categoria;
+import com.example.application.backend.model.Categoria;
 
 import java.util.List;
 

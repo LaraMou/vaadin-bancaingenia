@@ -1,4 +1,4 @@
-package com.example.application.model;
+package com.example.application.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,14 +29,17 @@ public class Movimiento extends AbstractEntity {
     /**
      * Relación Categorias y movimientos n-1
      */
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria")
     @JsonIgnore
      private Categoria categoria;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cuenta")
     private Cuenta cuenta;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tarjeta")

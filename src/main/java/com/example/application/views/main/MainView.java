@@ -55,6 +55,10 @@ public class MainView extends AppLayout {
         layout.add(viewTitle);
         layout.add(new Avatar());
         return layout;
+
+
+
+
     }
 
     private Component createDrawerContent(Tabs menu) {

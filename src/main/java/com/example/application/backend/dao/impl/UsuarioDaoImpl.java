@@ -3,7 +3,7 @@ package com.example.application.backend.dao.impl;
 import com.example.application.backend.dao.UsuarioDao;
 
 import com.example.application.backend.repository.UsuarioRepository;
-import com.example.application.model.Usuario;
+import com.example.application.backend.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

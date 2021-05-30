@@ -3,8 +3,6 @@ package com.example.application.backend.dao.impl;
 import com.example.application.backend.dao.TarjetaDAO;
 
 import com.example.application.backend.repository.TarjetaRepository;
-import com.example.application.model.Cuenta;
-import com.example.application.model.Tarjeta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +13,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import com.example.application.backend.model.Tarjeta;
+import com.example.application.backend.model.Cuenta;
 import java.util.Optional;
+
 
 @Repository
 public class TarjetaDAOImpl implements TarjetaDAO {

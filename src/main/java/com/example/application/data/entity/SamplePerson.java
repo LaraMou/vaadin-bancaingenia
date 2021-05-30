@@ -2,7 +2,7 @@ package com.example.application.data.entity;
 
 import javax.persistence.Entity;
 
-import com.example.application.model.AbstractEntity;
+import com.example.application.backend.model.AbstractEntity;
 import java.time.LocalDate;
 
 @Entity

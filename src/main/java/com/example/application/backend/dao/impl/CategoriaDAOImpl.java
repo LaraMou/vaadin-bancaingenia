@@ -4,7 +4,7 @@ package com.example.application.backend.dao.impl;
 import com.example.application.backend.dao.CategoriaDAO;
 
 import com.example.application.backend.repository.CategoriaReporitory;
-import com.example.application.model.Categoria;
+import com.example.application.backend.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

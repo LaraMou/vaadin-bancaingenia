@@ -1,7 +1,7 @@
 package com.example.application.backend.dao;
 
 
-import com.example.application.model.Tarjeta;
+import com.example.application.backend.model.Tarjeta;
 
 import java.util.List;
 import java.util.Optional;

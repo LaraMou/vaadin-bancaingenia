@@ -1,7 +1,7 @@
 package com.example.application.backend.service;
 
 
-import com.example.application.model.Cuenta;
+import com.example.application.backend.model.Cuenta;
 
 import java.util.List;
 

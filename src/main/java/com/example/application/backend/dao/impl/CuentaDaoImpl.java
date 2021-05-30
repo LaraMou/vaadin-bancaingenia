@@ -2,8 +2,8 @@ package com.example.application.backend.dao.impl;
 
 import com.example.application.backend.dao.CuentaDao;
 
-import com.example.application.model.Cuenta;
-import com.example.application.model.Usuario;
+import com.example.application.backend.model.Cuenta;
+import com.example.application.backend.model.Usuario;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

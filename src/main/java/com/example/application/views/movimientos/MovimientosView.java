@@ -1,25 +1,22 @@
 package com.example.application.views.movimientos;
 
 
-import com.example.application.data.service.SamplePersonService;
-
-
-import com.example.application.model.Movimiento;
+import com.example.application.backend.model.Movimiento;
+import com.example.application.backend.service.MovimientoService;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
 
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.provider.SortDirection;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.example.application.views.main.MainView;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +25,26 @@ import java.util.List;
 public class MovimientosView extends HorizontalLayout {
 
     List<Movimiento> movimientosList = new ArrayList<>();
+    ListDataProvider<Movimiento> movimientosProvider;
 
-    public MovimientosView() {
+    Grid<Movimiento> grid = new Grid<>(Movimiento.class);
 
-        Grid<Movimiento> grid = new Grid<>(Movimiento.class);
-        grid.setColumns("tarjeta","importe","concepto","fecha");
-        grid.setWidthFull();
+    private MovimientoService movimientoService;
 
+    public MovimientosView(MovimientoService movimientoService) {
+        this.movimientoService = movimientoService;
+        this.movimientosList= movimientoService.findMovimientos();
+     //   System.out.println(movimientoService.findMovimientos());
+        loadGrid();
+
+
+
+        grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
+//        grid.addColumn(movimiento -> hideCardNumber(movimiento.getTarjeta().toString())).setHeader("Tarjeta");
+        grid.getColumnByKey("tarjeta.id").setHeader("Tarjeta");
+        grid.getColumnByKey("importe").setHeader("Importe");
+        grid.getColumnByKey("concepto").setHeader("Concepto");
+        grid.getColumnByKey("fechaValor").setHeader("Fecha");
         HorizontalLayout layout = new HorizontalLayout();
         add(new H1("Movimientos"));
         add(new Hr());
@@ -56,8 +66,25 @@ public class MovimientosView extends HorizontalLayout {
         layout2.add(grid);
         add(layout2);
 
-    }
+
+
 
     }
+    private String hideCardNumber(String cardNumber){
+        return "**** " + cardNumber.substring(Integer.parseInt(cardNumber.substring(cardNumber.length() - 4)));
+    }
+
+
+
+    private void loadGrid()
+    {
+        movimientosProvider = DataProvider.ofCollection(this.movimientosList);
+        movimientosProvider.setSortOrder(Movimiento::getFecha, SortDirection.DESCENDING);
+
+        grid.setDataProvider(movimientosProvider);
+    }
+
+
+}
 
 

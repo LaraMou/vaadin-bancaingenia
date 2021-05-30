@@ -2,7 +2,7 @@ package com.example.application.backend.service;
 
 
 
-import com.example.application.model.Movimiento;
+import com.example.application.backend.model.Movimiento;
 
 import java.time.LocalDate;
 import java.util.List;

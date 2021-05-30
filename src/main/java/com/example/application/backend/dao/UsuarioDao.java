@@ -1,7 +1,7 @@
 package com.example.application.backend.dao;
 
 
-import com.example.application.model.Usuario;
+import com.example.application.backend.model.Usuario;
 
 import java.util.List;
 import java.util.Optional;

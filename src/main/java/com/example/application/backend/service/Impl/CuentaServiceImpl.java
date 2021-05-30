@@ -5,7 +5,7 @@ import com.example.application.backend.dao.CuentaDao;
 
 import com.example.application.backend.repository.CuentaRepository;
 import com.example.application.backend.service.CuentaService;
-import com.example.application.model.Cuenta;
+import com.example.application.backend.model.Cuenta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
