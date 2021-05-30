@@ -68,3 +68,7 @@
   font-size: var(--lumo-font-size-xs);
   margin-right: var(--lumo-space-l);
 }
+
+.button{
+  color: red;
+}
