@@ -33,7 +33,7 @@ public class CuentasView extends HorizontalLayout  {
         loadData();
         //añadir las cuentas en componente card
         add(createCard());
-        addClassName("navegation0");
+
 
     }
 

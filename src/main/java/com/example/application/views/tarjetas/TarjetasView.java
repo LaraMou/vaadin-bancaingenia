@@ -26,11 +26,11 @@ import org.slf4j.LoggerFactory;
 
 @Route(value = "Tarjetas", layout = MainView.class)
 @PageTitle("Bienvenido/a a tu banca")
-public class TarjetasView extends Div  {
+public class TarjetasView extends HorizontalLayout  {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final int NOTIFICATION_DEFAULT_DURATION = 5000;
     List<Tarjeta> tarjetas;
-    Cuenta cuenta;
+
     private TarjetaService tarjetaService;
     private MovimientoService movimientoService;
 

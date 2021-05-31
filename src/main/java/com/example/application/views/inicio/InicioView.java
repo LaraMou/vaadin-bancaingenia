@@ -1,7 +1,10 @@
 package com.example.application.views.inicio;
 
 import com.example.application.backend.model.Movimiento;
+import com.example.application.backend.model.Tarjeta;
 import com.example.application.backend.service.MovimientoService;
+import com.example.application.backend.service.TarjetaService;
+import com.example.application.components.CardTarjeta;
 import com.github.appreciated.card.Card;
 import com.github.appreciated.card.ClickableCard;
 import com.github.appreciated.card.RippleClickableCard;
@@ -34,6 +37,9 @@ import java.util.List;
 @RouteAlias(value = "", layout = MainView.class)
 @PageTitle("Bienvenido/a a tu banca")
 public class InicioView extends VerticalLayout {
+    List<Tarjeta> tarjetas;
+
+    private TarjetaService tarjetaService;
 
     List<Movimiento> movimientosList = new ArrayList<>();
     ListDataProvider<Movimiento> movimientosProvider;
@@ -105,12 +111,13 @@ public class InicioView extends VerticalLayout {
 
 
 
-    public InicioView(MovimientoService movimientoService) {
+    public InicioView(MovimientoService movimientoService, TarjetaService tarjetaService) {
         this.movimientoService = movimientoService;
+        this.tarjetaService = tarjetaService;
         this.movimientosList= movimientoService.findMovimientos();
         loadGrid();
-        createDialog();
-
+//        createDialog();
+        
 
         grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
         grid.getColumnByKey("tarjeta.id").setHeader("Tarjeta");
@@ -121,9 +128,13 @@ public class InicioView extends VerticalLayout {
 
 
         HorizontalLayout layout = new HorizontalLayout();
-        add(new H1("Tarjetas"));
-        add(new Hr());
-        layout.add(card, card2, card3,card4, card5);
+        addClassName("tarjetas-view");
+        setSizeFull();
+        //cargar datos desde repostorio
+        loadData();
+        //añadir las cuentas en componente card
+
+        layout.add(createCard());
 
         layout.setPadding(false);
         layout.setMargin(true);
@@ -140,7 +151,31 @@ public class InicioView extends VerticalLayout {
         layout2.setMargin(true);
         add(layout2);
         add(grid);
+
     }
+    private HorizontalLayout createCard() {
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        add(new H1("Tarjetas"));
+        add(new Hr());
+        for (Tarjeta tarjeta : this.tarjetas) {
+
+            horizontalLayout.add(new CardTarjeta(tarjeta, this.tarjetaService, this.movimientoService));
+
+        }
+
+        return horizontalLayout;
+    }
+
+    /**
+     * Metodo que saca los datos de las tarjetas
+     */
+    private void loadData() {
+        this.tarjetas = tarjetaService.findTarjetas();
+    }
+
+    /**
+     * Metodo que retorna los datos de los movimientos
+     */
     private void loadGrid()
     {
         movimientosProvider = DataProvider.ofCollection(this.movimientosList);
@@ -149,13 +184,13 @@ public class InicioView extends VerticalLayout {
         grid.setDataProvider(movimientosProvider);
     }
 
-    private void createDialog(){
-        Dialog dialog = new Dialog();
-        dialog.add(new Text("Close me with the esc-key or an outside click"));
-
-        dialog.setWidth("400px");
-        dialog.setHeight("150px");
-
-
-    }
+//    private void createDialog(){
+//        Dialog dialog = new Dialog();
+//        dialog.add(new Text("Close me with the esc-key or an outside click"));
+//
+//        dialog.setWidth("400px");
+//        dialog.setHeight("150px");
+//
+//
+//    }
 }

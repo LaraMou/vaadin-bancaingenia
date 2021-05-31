@@ -42,7 +42,9 @@ public class CardTarjeta extends ClickableCard {
         HorizontalLayout numcLayout = new HorizontalLayout();
         Span numcSpan = new Span();
         String formateo = String.valueOf(tarjeta.getNumeroTarjeta());
-        formateo.replace("4","*");
+        System.out.println("formateo"+tarjeta.getNumeroTarjeta());
+        hideCardNumber(formateo);
+
 
         numcSpan.add(tarjeta.getTipo().toUpperCase(Locale.ROOT)+"  " + formateo);
 
@@ -70,15 +72,17 @@ public class CardTarjeta extends ClickableCard {
     private Double recuperaSaldo(Tarjeta tarjeta, TarjetaService tarjetaService) {
         saldo = tarjetaService.getSaldoTotalCuenta(tarjeta.getId());
         if(saldo==null)
-            saldo = 1000d;
+            saldo = 0D;
         return  saldo;
     }
 
-//    private Double recuperaSaldo(Cuenta cuenta, CuentaService cuentaService) {
-//        saldo = cuentaService.getSaldoTotalCuenta(cuenta.getId());
-//        System.out.println("saldo*********"+saldo);
-//        return  saldo;
-//    }
+    private String hideCardNumber(String cardNumber){
+        String formateo = cardNumber;
+        System.out.println("formateo******* "+ formateo);
+        formateo.replaceAll("4","*");
+        return  formateo;
 
+
+    }
 }
 

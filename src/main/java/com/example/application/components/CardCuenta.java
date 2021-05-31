@@ -72,7 +72,9 @@ public class CardCuenta extends ClickableCard {
         return  saldo;
     }
 
-
+    private String hideCardNumber(String cardNumber){
+        return "**** " + cardNumber.substring(Integer.parseInt(cardNumber.substring(cardNumber.length() - 2)));
+    }
 
 
 }

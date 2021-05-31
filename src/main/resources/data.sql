@@ -47,7 +47,7 @@ insert into movimiento(id,concepto,descripcion,fecha,fecha_valor,importe,id_cate
 values (8,'Pago restaurante','pago restaurante','2021-07-12','2021-07-12',2000,4,1,222221);
 
 insert into movimiento(id,concepto,descripcion,fecha,fecha_valor,importe,id_categoria,id_cuenta,id_tarjeta)
-values (9,'Retirada de efectivo','retirada de efectivo','2021-08-12','2021-08-12',3000,4,1,222221);
+values (9,'Retirada de efectivo','retirada de efectivo','2021-08-12','2021-08-12',300,4,1,222221);
 
 
 
