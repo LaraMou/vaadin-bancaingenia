@@ -32,6 +32,7 @@ public class CardCuenta extends ClickableCard {
         Image ingeniaImage = new Image("images/logo.png", " logo");
 
         ingeniaImage.setWidth("24px");
+        ingeniaImage.setHeight("18px");
         imagenLayout.add(ingeniaImage);
 
         // numerocuenta y tipo de cuenta

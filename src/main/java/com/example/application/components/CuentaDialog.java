@@ -32,18 +32,10 @@ public class CuentaDialog extends Dialog {
 
         add(detailsCuenta(movimientoService,id));
 
-        setCloseOnEsc(false);
-        setCloseOnOutsideClick(false);
+        setCloseOnEsc(true);
+        setCloseOnOutsideClick(true);
         Span message = new Span();
 
-        Button confirmButton = new Button("Close", event -> {
-            message.setText("Confirmed!");
-            close();
-        });
-
-
-
-        add(new Div( confirmButton));
     }
 
     private VerticalLayout detailsCuenta(MovimientoService movimientoService, Long id) {
@@ -54,8 +46,8 @@ public class CuentaDialog extends Dialog {
         VerticalLayout verticalLayout = new VerticalLayout();
 
         verticalLayout.setSizeFull();
-        verticalLayout.setWidth("1366px");
-        verticalLayout.setHeight("768px");
+        verticalLayout.setWidth("1100px");
+        verticalLayout.setHeight("500px");
         //iban
         verticalLayout.add(grid);
 

@@ -34,6 +34,7 @@ public class MovimientosView extends HorizontalLayout {
     public MovimientosView(MovimientoService movimientoService) {
         this.movimientoService = movimientoService;
         this.movimientosList= movimientoService.findMovimientos();
+
      //   System.out.println(movimientoService.findMovimientos());
         loadGrid();
 

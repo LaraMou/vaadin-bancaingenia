@@ -33,15 +33,7 @@ public class CuentasView extends HorizontalLayout  {
         loadData();
         //añadir las cuentas en componente card
         add(createCard());
-        add(new Hr());
         addClassName("navegation0");
-        NativeButton button = new NativeButton(
-                "Navigate to cuentas");
-        button.addClickListener(e ->
-                button.getUI().ifPresent(ui ->
-                        ui.navigate("cuentamov"))
-        );
-        add(button);
 
     }
 
