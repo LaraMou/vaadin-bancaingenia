@@ -22,4 +22,5 @@ public interface MovimientoDAO {
 
     public List<Movimiento> findMovimientosEntre(Long id, LocalDate fechaInicio, LocalDate fechaFin);
     List<Movimiento> findMovimientosByCuenta(Long idCuenta);
+    List<Movimiento> findMovimientosByTarjeta(Long idTarjeta);
 }

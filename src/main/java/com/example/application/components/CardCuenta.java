@@ -14,7 +14,7 @@ import java.util.Locale;
 public class CardCuenta extends ClickableCard {
     public CardCuenta(Cuenta cuenta, CuentaService cuentaService, MovimientoService movimientoService) {
         super(event -> {
-            new CuentaDialog(cuentaService, movimientoService,cuenta.getId()).open();
+            new CuentaDialog(cuenta,cuentaService, movimientoService,cuenta.getId()).open();
 
         });
         // estilo del card
@@ -34,7 +34,7 @@ public class CardCuenta extends ClickableCard {
         ingeniaImage.setWidth("24px");
         imagenLayout.add(ingeniaImage);
 
-        // layout con el iban de la cuenta
+        // numerocuenta y tipo de cuenta
         HorizontalLayout numcLayout = new HorizontalLayout();
         Span numcSpan = new Span();
 

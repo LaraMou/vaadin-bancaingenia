@@ -87,5 +87,17 @@ public class MovimientoDAOImpl implements MovimientoDAO {
         return movimientos;
     }
 
+    @Override
+    public List<Movimiento> findMovimientosByTarjeta(Long idTarjeta) {
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Movimiento> criteria = builder.createQuery(Movimiento.class);
+        Root<Movimiento> root =     criteria.from(Movimiento.class);
+        Query query =  manager.createQuery(criteria);
+        criteria.select(root);
+        criteria.where(builder.equal(root.get("id_tarjeta"), idTarjeta));
+        List<Movimiento> movimientos = query.getResultList();
+        return movimientos;
+    }
+
 
 }

@@ -22,6 +22,7 @@ public interface MovimientoService {
 
     List <Movimiento> findMovimientosEntre(Long id, LocalDate fechaInicio, LocalDate fechaFin);
     List<Movimiento> findMovimentosByCuenta(Long idCuenta);
+    List<Movimiento> findMovimientosByTarjeta(Long idTarjeta);
 
 
 }

@@ -37,6 +37,11 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     @Override
     public List<Movimiento> findMovimentosByCuenta(Long idCuenta) {
-        return null;
+        return this.movimientoDAO.findMovimientosByCuenta(idCuenta);
+    }
+
+    @Override
+    public List<Movimiento> findMovimientosByTarjeta(Long idTarjeta) {
+        return this.movimientoDAO.findMovimientosByTarjeta(idTarjeta);
     }
 }
