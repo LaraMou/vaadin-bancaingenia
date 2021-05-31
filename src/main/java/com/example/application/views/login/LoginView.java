@@ -25,6 +25,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 		loginForm.setForgotPasswordButtonVisible(false);	
 		loginForm.setAction("login");
 
+
         add(new Image("images/logo1.png", "IngeniaBANK logo"));
         add(loginForm);
         add(new H3("Usuario: admin - Password: password"));

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -77,9 +78,17 @@ public class MainView extends AppLayout {
         HorizontalLayout logoLayout = new HorizontalLayout();
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        logoLayout.add(new Image("images/logo1.png", "IngeniaBANK logo"));
-        layout.add(logoLayout, menu);
+        Image image = new Image ("images/logo1.png", "IngeniaBANK logo");
+        logoLayout.add(image);
+        image.addClickListener((e -> {
+            UI.getCurrent().navigate("Inicio");
+        }));
+        logoLayout.addClickListener((e -> {
+            UI.getCurrent().navigate("Inicio");
+        }));
 
+        layout.add(logoLayout, menu);
+        layout.getElement().getStyle().set("cursor","pointer");
         return layout;
     }
 
