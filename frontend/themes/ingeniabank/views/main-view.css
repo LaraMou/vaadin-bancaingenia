@@ -20,6 +20,10 @@ vaadin-app-layout[dir='rtl'] #header vaadin-avatar {
   color: #171948;
 
 }
+
+.tarjetas-view vaadin-grid, .tarjetas-view vaadin-grid-cell-content {
+  background-color: white
+}
 #logo {
   box-sizing: border-box;
   box-shadow: inset 0 -1px var(--lumo-contrast-10pct);

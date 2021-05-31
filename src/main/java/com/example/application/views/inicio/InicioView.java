@@ -59,55 +59,6 @@ public class InicioView extends VerticalLayout {
             new TitleLabel("Example Title") // Follow up with more Components ...
     );*/
 
-    ClickableCard card = new  ClickableCard(
-
-
-            onClick -> {
-                Dialog dialog = new Dialog();
-                dialog.add(new H1("Lista de movimientos de la tarjeta"));
-                dialog.setWidth("1366px");
-                dialog.setHeight("766px");
-                dialog.open();
-                ;},
-
-            new Image("images/bbva.png", "BBVA logo"),
-            new TitleLabel("10354,52 €                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("****3331")
-
-    );
-
-    ClickableCard card2 = new  ClickableCard (
-            onClick -> {
-                UI.getCurrent().navigate("Movimientos");},
-            new Image("images/bbva.png", "BBVA logo"),
-            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("**** 4441")
-    );
-
-    ClickableCard card3 = new  ClickableCard (
-            onClick -> {
-                UI.getCurrent().navigate("Movimientos");},
-            new Image("images/bbva.png", "BBVA logo"),
-            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("**** 5551")
-    );
-    ClickableCard card4 = new  ClickableCard(
-            onClick -> {
-                UI.getCurrent().navigate("Movimientos");},
-            new Image("images/bbva.png", "BBVA logo"),
-            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("**** 2221")
-    );
-
-    ClickableCard card5 = new  ClickableCard (
-            onClick -> {
-                UI.getCurrent().navigate("Movimientos");},
-            new Image("images/bbva.png", "BBVA logo"),
-            new TitleLabel("10354,52€                         ").withWhiteSpaceNoWrap(),
-            new PrimaryLabel("**** 1111")
-    );
-
-
 
 
 
@@ -130,27 +81,18 @@ public class InicioView extends VerticalLayout {
         HorizontalLayout layout = new HorizontalLayout();
         addClassName("tarjetas-view");
         setSizeFull();
-        //cargar datos desde repostorio
         loadData();
-        //añadir las cuentas en componente card
-
         layout.add(createCard());
-
         layout.setPadding(false);
         layout.setMargin(true);
-
         layout.setSpacing(true);
-
         add(layout);
         add(new Hr());
+        layout.getElement().getStyle().set("background-color","white");
+        grid.getElement().getStyle().set("background-color","white");
+        add(grid);
         addClassName("inicio-view2");
 
-        HorizontalLayout layout2 = new HorizontalLayout();
-        layout2.setPadding(false);
-        layout2.setSpacing(true);
-        layout2.setMargin(true);
-        add(layout2);
-        add(grid);
 
     }
     private HorizontalLayout createCard() {

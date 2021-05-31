@@ -25,7 +25,7 @@ public class CardTarjeta extends ClickableCard {
 
 
         this.setWidth("300px");
-        this.setHeight("150px");
+        this.setHeight("175px");
         this.getElement().getStyle().set("radius", "24px");
 
         // layout principal que contendrá los layouts posteriores
@@ -47,7 +47,10 @@ public class CardTarjeta extends ClickableCard {
 
 
         numcSpan.add(tarjeta.getTipo().toUpperCase(Locale.ROOT)+"  " + formateo);
-
+        numcSpan.getElement().getStyle().set("background", "#EA6D64");
+        numcSpan.getElement().getStyle().set("border-radius", "25px");
+        numcSpan.getElement().getStyle().set("padding", "6px");
+        numcSpan.getElement().getStyle().set("color", "white");
         numcLayout.add(numcSpan);
 
 
@@ -56,6 +59,7 @@ public class CardTarjeta extends ClickableCard {
         addClassName("saldo");
         Span saldoSpan = new Span();
         saldoSpan.add(saldo + " €");
+        saldoSpan.getElement().getStyle().set("font-weight", "bold");
         saldoLayout.add(saldoSpan);
 
 

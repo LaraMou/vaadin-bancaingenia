@@ -10,7 +10,7 @@
 
 .tarjetas-view vaadin-grid,
 .tarjetas-view vaadin-grid-cell-content {
-  background-color: var(--lumo-contrast-10pct);
+  background-color: var(white);
 }
 
 .tarjetas-view .card {

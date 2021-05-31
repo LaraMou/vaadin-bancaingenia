@@ -23,7 +23,7 @@ public class CardCuenta extends ClickableCard {
         // estilo del card
 
         this.setWidth("300px");
-        this.setHeight("150px");
+        this.setHeight("175px");
         this.getElement().getStyle().set("radius", "24px");
 
         // layout principal que contendrá los layouts posteriores
@@ -32,11 +32,8 @@ public class CardCuenta extends ClickableCard {
 
         // layout con el logo de ingenia bank
         HorizontalLayout imagenLayout = new HorizontalLayout();
-        Image ingeniaImage = new Image("images/logo.png", " logo");
+        Image ingeniaImage = new Image("images/logoB.png", " logo");
 
-        ingeniaImage.setWidth("70px");
-        ingeniaImage.setHeight("50px");
-        ingeniaImage.setHeight("18px");
         imagenLayout.add(ingeniaImage);
 
         // numerocuenta y tipo de cuenta
@@ -44,8 +41,12 @@ public class CardCuenta extends ClickableCard {
         Span numcSpan = new Span();
 
         numcSpan.add(cuenta.getTipocuenta().toUpperCase(Locale.ROOT)+"  " + cuenta.getNumerocuenta());
-
-        numcLayout.add(numcSpan);
+        numcSpan.getElement().getStyle().set("background", "#42446F");
+        numcSpan.getElement().getStyle().set("border-radius", "25px");
+        numcSpan.getElement().getStyle().set("padding", "6px");
+        numcSpan.getElement().getStyle().set("color", "white");
+        numcSpan.getElement().getStyle().set("text-align", "center");
+        imagenLayout.add(numcSpan);
 
 
         // layout con el saldo de la cuenta
@@ -53,6 +54,8 @@ public class CardCuenta extends ClickableCard {
         addClassName("saldo");
         Span saldoSpan = new Span();
         saldoSpan.add(saldo + " €");
+        saldoSpan.getElement().getStyle().set("text-align", "center");
+        saldoSpan.getElement().getStyle().set("font-weight", "bold");
         saldoLayout.add(saldoSpan);
 
 
