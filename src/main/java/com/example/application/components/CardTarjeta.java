@@ -41,8 +41,8 @@ public class CardTarjeta extends ClickableCard {
         // numerocuenta y tipo de cuenta
         HorizontalLayout numcLayout = new HorizontalLayout();
         Span numcSpan = new Span();
-        String formateo = String.valueOf(tarjeta.getNumeroTarjeta());
-        System.out.println("formateo"+tarjeta.getNumeroTarjeta());
+        String formateo = String.valueOf(tarjeta.getMaskedNumeroTarjeta());
+        System.out.println("formateo"+tarjeta.getMaskedNumeroTarjeta());
         hideCardNumber(formateo);
 
 

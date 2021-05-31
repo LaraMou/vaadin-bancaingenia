@@ -14,6 +14,8 @@ public class Tarjeta extends AbstractEntity{
     @Column(name="numero_tarjeta")
     private Long numeroTarjeta;
 
+    private Integer idMasked;
+
     @Column(name="ccv"  , nullable = false)
     private Long ccv;
 
@@ -44,7 +46,8 @@ public class Tarjeta extends AbstractEntity{
     public Tarjeta() {
     }
 
-    public Tarjeta(Long ccv, LocalDateTime fechaExpedicion, LocalDateTime fechaExpiracion, String tipo, Estado estadoTarjeta, Integer limite) {
+    public Tarjeta(Integer idMasked,Long ccv, LocalDateTime fechaExpedicion, LocalDateTime fechaExpiracion, String tipo, Estado estadoTarjeta, Integer limite) {
+        this.idMasked = idMasked;
         this.ccv = ccv;
         this.fechaExpedicion = fechaExpedicion;
         this.fechaExpiracion = fechaExpiracion;
@@ -108,6 +111,15 @@ public class Tarjeta extends AbstractEntity{
     public void setLimite(Integer limite) {
         this.limite = limite;
     }
+
+    public String getMaskedNumeroTarjeta(){
+        return hideCardNumber(numeroTarjeta.toString());
+    }
+
+    private String hideCardNumber(String cardNumber){
+        return "**** " + Integer.parseInt(cardNumber.substring(cardNumber.length() - 4));
+    }
+
 
     @Override
     public String toString() {
