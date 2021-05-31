@@ -90,6 +90,7 @@ public class MovimientoDAOImpl implements MovimientoDAO {
 
     @Override
     public List<Movimiento> findMovimientosByTarjeta(Long idTarjeta) {
+
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<Movimiento> criteria = builder.createQuery(Movimiento.class);
         Root<Movimiento> root =     criteria.from(Movimiento.class);

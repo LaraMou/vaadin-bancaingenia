@@ -3,11 +3,14 @@ package com.example.application.views.movimientos;
 
 import com.example.application.backend.model.Movimiento;
 import com.example.application.backend.service.MovimientoService;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
 
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 import com.vaadin.flow.data.provider.DataProvider;
@@ -23,7 +26,7 @@ import java.util.List;
 @Route(value = "Movimientos/:samplePersonID?/:action?(edit)", layout = MainView.class)
 @PageTitle("Bienvenido/a a tu banca")
 public class MovimientosView extends HorizontalLayout {
-
+    private Icon arrow;
     List<Movimiento> movimientosList = new ArrayList<>();
     ListDataProvider<Movimiento> movimientosProvider;
 
@@ -41,8 +44,8 @@ public class MovimientosView extends HorizontalLayout {
 
         grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
 //        grid.addColumn(movimiento -> hideCardNumber(movimiento.getTarjeta().toString())).setHeader("Tarjeta");
-
-        grid.getColumnByKey("tarjeta.idmasked").setHeader("Tarjeta");
+        grid.addComponentColumn(item -> iconoArrow(grid,item)).setFlexGrow(1).setWidth("120px").setHeader("");
+        grid.getColumnByKey("tarjeta.id").setHeader("Tarjeta");
         grid.getColumnByKey("importe").setHeader("Importe");
         grid.getColumnByKey("concepto").setHeader("Concepto");
         grid.getColumnByKey("fechaValor").setHeader("Fecha");
@@ -70,6 +73,19 @@ public class MovimientosView extends HorizontalLayout {
 
 
 
+    }
+
+    private Icon iconoArrow(Grid<Movimiento> grid, Movimiento item) {
+        if(item.getImporte()>0d){
+
+            arrow = new Icon(VaadinIcon.ARROW_CIRCLE_DOWN);
+            arrow.setColor("green");
+
+        }else{
+            arrow = new Icon(VaadinIcon.ARROW_CIRCLE_UP);
+            arrow.setColor("red");
+        }
+        return arrow;
     }
 
 

@@ -10,6 +10,7 @@ import com.github.appreciated.card.ClickableCard;
 import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.card.label.PrimaryLabel;
 import com.github.appreciated.card.label.TitleLabel;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -17,6 +18,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -38,7 +41,7 @@ import java.util.List;
 @PageTitle("Bienvenido/a a tu banca")
 public class InicioView extends VerticalLayout {
     List<Tarjeta> tarjetas;
-
+    private Icon arrow;
     private TarjetaService tarjetaService;
 
     List<Movimiento> movimientosList = new ArrayList<>();
@@ -72,6 +75,7 @@ public class InicioView extends VerticalLayout {
 
         grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
         grid.getColumnByKey("tarjeta.id").setHeader("Tarjeta");
+        grid.addComponentColumn(item -> iconoArrow(grid,item)).setFlexGrow(1).setWidth("120px").setHeader("");
         grid.getColumnByKey("importe").setHeader("Importe");
         grid.getColumnByKey("concepto").setHeader("Concepto");
         grid.getColumnByKey("fechaValor").setHeader("Fecha");
@@ -95,6 +99,24 @@ public class InicioView extends VerticalLayout {
 
 
     }
+
+    private Icon iconoArrow(Grid<Movimiento> grid, Movimiento item) {
+        if(item.getImporte()>0d){
+
+            arrow = new Icon(VaadinIcon.ARROW_CIRCLE_DOWN);
+            arrow.setColor("green");
+
+        }else{
+            arrow = new Icon(VaadinIcon.ARROW_CIRCLE_UP);
+            arrow.setColor("red");
+        }
+        return arrow;
+    }
+
+
+
+
+
     private HorizontalLayout createCard() {
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         add(new H1("Tarjetas"));

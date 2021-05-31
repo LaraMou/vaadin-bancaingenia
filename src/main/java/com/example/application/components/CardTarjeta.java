@@ -42,7 +42,7 @@ public class CardTarjeta extends ClickableCard {
         HorizontalLayout numcLayout = new HorizontalLayout();
         Span numcSpan = new Span();
         String formateo = String.valueOf(tarjeta.getMaskedNumeroTarjeta());
-        System.out.println("formateo"+tarjeta.getMaskedNumeroTarjeta());
+
         hideCardNumber(formateo);
 
 
@@ -82,7 +82,7 @@ public class CardTarjeta extends ClickableCard {
 
     private String hideCardNumber(String cardNumber){
         String formateo = cardNumber;
-        System.out.println("formateo******* "+ formateo);
+
         formateo.replaceAll("4","*");
         return  formateo;
 

@@ -6,8 +6,12 @@ import com.example.application.backend.model.Tarjeta;
 import com.example.application.backend.service.CuentaService;
 import com.example.application.backend.service.MovimientoService;
 import com.example.application.backend.service.TarjetaService;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.List;
@@ -19,6 +23,7 @@ public class TarjetaDialog extends Dialog {
     private Tarjeta tarjeta;
     private List<Movimiento> movimientoList;
     private Grid<Movimiento> grid = new Grid<>(Movimiento.class);
+    private Icon arrow = new Icon();
     public TarjetaDialog(Tarjeta tarjeta, TarjetaService tarjetaService, MovimientoService movimientoService, Long id) {
         this.id = id;
         this.tarjeta = tarjeta;
@@ -30,6 +35,7 @@ public class TarjetaDialog extends Dialog {
         setCloseOnEsc(true);
         setCloseOnOutsideClick(true);
     }
+
 
     private VerticalLayout detailsTarjeta(MovimientoService movimientoService, Long id) {
 
@@ -58,9 +64,26 @@ public class TarjetaDialog extends Dialog {
         grid.setSizeFull();
 
         grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
+        grid.getColumnByKey("tarjeta.id").setHeader("Tarjeta");
 
+        grid.addComponentColumn(item -> iconoArrow(grid,item)).setFlexGrow(1).setWidth("120px").setHeader("");
 
 
 
     }
+
+    private Icon iconoArrow(Grid<Movimiento> grid, Movimiento item) {
+        if(item.getImporte()>0d){
+
+            arrow = new Icon(VaadinIcon.ARROW_CIRCLE_DOWN);
+            arrow.setColor("green");
+
+        }else{
+            arrow = new Icon(VaadinIcon.ARROW_CIRCLE_UP);
+            arrow.setColor("red");
+        }
+        return arrow;
+    }
+
+
 }
