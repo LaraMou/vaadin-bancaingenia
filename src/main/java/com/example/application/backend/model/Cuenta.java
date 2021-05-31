@@ -52,7 +52,7 @@ public class Cuenta extends AbstractEntity {
     @JsonIgnore
     private List<Movimiento> listaMovimientos;
 
-    @ManyToMany(mappedBy = "cuentas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "cuentas", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     private List<Usuario> usuarios = new ArrayList<>();
 
 

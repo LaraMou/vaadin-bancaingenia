@@ -37,7 +37,7 @@ public class Tarjeta extends AbstractEntity{
     @JsonIgnore
     private Cuenta cuenta;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cuenta", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tarjeta", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Movimiento> listaMovimientos;
 

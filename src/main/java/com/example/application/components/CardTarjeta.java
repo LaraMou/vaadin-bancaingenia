@@ -1,9 +1,12 @@
 package com.example.application.components;
 
+import com.example.application.backend.model.Cuenta;
+import com.example.application.backend.model.Tarjeta;
 import com.example.application.backend.service.CuentaService;
 import com.example.application.backend.service.MovimientoService;
-import com.example.application.backend.model.Cuenta;
+import com.example.application.backend.service.TarjetaService;
 import com.github.appreciated.card.ClickableCard;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -11,16 +14,15 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.Locale;
 
-public class CardCuenta extends ClickableCard {
+public class CardTarjeta extends ClickableCard {
     private Double saldo;
-    private String mascara;
-    public CardCuenta(Cuenta cuenta, CuentaService cuentaService, MovimientoService movimientoService) {
+    public CardTarjeta(Tarjeta tarjeta, TarjetaService tarjetaService, MovimientoService movimientoService) {
         super(event -> {
-            new CuentaDialog(cuenta,cuentaService, movimientoService,cuenta.getId()).open();
+            new TarjetaDialog(tarjeta,tarjetaService, movimientoService,tarjeta.getId()).open();
 
         });
-        recuperaSaldo(cuenta,cuentaService);
-        // estilo del card
+        recuperaSaldo(tarjeta,tarjetaService);
+
 
         this.setWidth("300px");
         this.setHeight("150px");
@@ -36,14 +38,15 @@ public class CardCuenta extends ClickableCard {
 
         ingeniaImage.setWidth("70px");
         ingeniaImage.setHeight("50px");
-        ingeniaImage.setHeight("18px");
         imagenLayout.add(ingeniaImage);
 
         // numerocuenta y tipo de cuenta
         HorizontalLayout numcLayout = new HorizontalLayout();
         Span numcSpan = new Span();
+        String formateo = String.valueOf(tarjeta.getNumeroTarjeta());
+        formateo.replace("4","*");
 
-        numcSpan.add(cuenta.getTipocuenta().toUpperCase(Locale.ROOT)+"  " + cuenta.getNumerocuenta());
+        numcSpan.add(tarjeta.getTipo().toUpperCase(Locale.ROOT)+"  " + formateo);
 
         numcLayout.add(numcSpan);
 
@@ -66,14 +69,18 @@ public class CardCuenta extends ClickableCard {
 
     }
 
-    private Double recuperaSaldo(Cuenta cuenta, CuentaService cuentaService) {
-         saldo = cuentaService.getSaldoTotalCuenta(cuenta.getId());
-
+    private Double recuperaSaldo(Tarjeta tarjeta, TarjetaService tarjetaService) {
+        saldo = tarjetaService.getSaldoTotalCuenta(tarjeta.getId());
+        if(saldo==null)
+            saldo = 1000d;
         return  saldo;
     }
 
-
-
+//    private Double recuperaSaldo(Cuenta cuenta, CuentaService cuentaService) {
+//        saldo = cuentaService.getSaldoTotalCuenta(cuenta.getId());
+//        System.out.println("saldo*********"+saldo);
+//        return  saldo;
+//    }
 
 }
 

@@ -49,7 +49,10 @@ public class CuentaServiceImpl implements CuentaService {
         cuentaRepository.deleteById(id);
     }
 
-
+    @Override
+    public Double getSaldoTotalCuenta(Long id) {
+        return cuentaRepository.getSaldoTotalCuenta(id);
+    }
 
 
 }

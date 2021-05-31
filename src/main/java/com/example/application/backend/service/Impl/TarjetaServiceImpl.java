@@ -1,6 +1,7 @@
 package com.example.application.backend.service.Impl;
 import com.example.application.backend.dao.TarjetaDAO;
 import com.example.application.backend.model.Tarjeta;
+import com.example.application.backend.repository.TarjetaRepository;
 import com.example.application.backend.service.TarjetaService;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,12 @@ import java.util.Optional;
 public class TarjetaServiceImpl implements TarjetaService {
 
     public TarjetaDAO tarjetaDAO;
-    public TarjetaServiceImpl(TarjetaDAO tarjetaDAO) {this.tarjetaDAO = tarjetaDAO;}
+    private TarjetaRepository tarjetaRepository;
+
+    public TarjetaServiceImpl(TarjetaDAO tarjetaDAO,TarjetaRepository tarjetaRepository) {
+        this.tarjetaDAO = tarjetaDAO;
+        this.tarjetaRepository = tarjetaRepository;
+    }
 
     @Override
     public Tarjeta createTarjeta(Tarjeta tarjeta){ return this.tarjetaDAO.createTarjeta(tarjeta);}
@@ -35,5 +41,10 @@ public class TarjetaServiceImpl implements TarjetaService {
     @Override
     public List<Tarjeta> findTarjetasByCuenta(Long numeroCuenta){
         return this.tarjetaDAO.findTarjetasByCuenta(numeroCuenta);
+    }
+
+    @Override
+    public Double getSaldoTotalCuenta(Long id) {
+        return this.tarjetaRepository.getSaldoTotalCuenta(id);
     }
 }

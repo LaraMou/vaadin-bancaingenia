@@ -20,4 +20,6 @@ public interface TarjetaService {
     Optional<Tarjeta> findOneTarjeta(Long numeroTarjeta);
 
     List<Tarjeta> findTarjetasByCuenta(Long numeroCuenta);
+
+    Double getSaldoTotalCuenta(Long id);
 }

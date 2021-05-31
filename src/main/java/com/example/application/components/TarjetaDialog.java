@@ -2,66 +2,62 @@ package com.example.application.components;
 
 import com.example.application.backend.model.Cuenta;
 import com.example.application.backend.model.Movimiento;
+import com.example.application.backend.model.Tarjeta;
 import com.example.application.backend.service.CuentaService;
 import com.example.application.backend.service.MovimientoService;
-import com.vaadin.flow.component.Shortcuts;
-import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.button.Button;
+import com.example.application.backend.service.TarjetaService;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.List;
-import java.util.Locale;
 
-public class CuentaDialog extends Dialog {
-    private CuentaService cuentaService;
+public class TarjetaDialog extends Dialog {
+    private TarjetaService tarjetaService;
     private MovimientoService movimientoService;
     private Long id;
-    private Cuenta cuenta;
+    private Tarjeta tarjeta;
     private List<Movimiento> movimientoList;
     private Grid<Movimiento> grid = new Grid<>(Movimiento.class);
-    public CuentaDialog(Cuenta cuenta, CuentaService cuentaService, MovimientoService movimientoService, Long id) {
+    public TarjetaDialog(Tarjeta tarjeta, TarjetaService tarjetaService, MovimientoService movimientoService, Long id) {
         this.id = id;
-        this.cuenta = cuenta;
-        this.cuentaService = cuentaService;
+        this.tarjeta = tarjeta;
+        this.tarjetaService = tarjetaService;
         this.movimientoService = movimientoService;
-        loadGrid(id);
-        configureGrid();
-        add(detailsCuenta(id));
+
+        add(detailsTarjeta(movimientoService,id));
 
         setCloseOnEsc(true);
         setCloseOnOutsideClick(true);
-        Span message = new Span();
-
     }
 
-    private VerticalLayout detailsCuenta( Long id) {
+    private VerticalLayout detailsTarjeta(MovimientoService movimientoService, Long id) {
 
-
+        loadGrid(id);
+        configureGrid();
 
         VerticalLayout verticalLayout = new VerticalLayout();
 
         verticalLayout.setSizeFull();
         verticalLayout.setWidth("1100px");
         verticalLayout.setHeight("500px");
-        //iban
+
         verticalLayout.add(grid);
 
         return verticalLayout;
     }
 
     private void loadGrid(Long id) {
-        movimientoList = movimientoService.findMovimentosByCuenta(id);
+        movimientoList = movimientoService.findMovimientosByTarjeta(id);
+
         grid.setItems(movimientoList);
     }
     private void configureGrid() {
-        grid.addClassName("lista-cuenta");
+
+        grid.addClassName("lista-tarjeta");
         grid.setSizeFull();
-        grid.setColumns("cuenta.numerocuenta","importe","concepto","fechaValor");
+
+        grid.setColumns("tarjeta.id","importe","concepto","fechaValor");
 
 
 

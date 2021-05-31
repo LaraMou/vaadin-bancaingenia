@@ -13,6 +13,7 @@ public interface CuentaService {
     Cuenta saveCuenta(Cuenta cuenta);
 
    void deleteById(Long id);
+    Double getSaldoTotalCuenta(Long id);
 
 
 
