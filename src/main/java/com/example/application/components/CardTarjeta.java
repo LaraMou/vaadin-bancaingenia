@@ -34,10 +34,8 @@ public class CardTarjeta extends ClickableCard {
 
         // layout con el logo de ingenia bank
         HorizontalLayout imagenLayout = new HorizontalLayout();
-        Image ingeniaImage = new Image("images/logo.png", " logo");
+        Image ingeniaImage = new Image("images/bbvacirc.png", " bbvacirc");
 
-        ingeniaImage.setWidth("70px");
-        ingeniaImage.setHeight("50px");
         imagenLayout.add(ingeniaImage);
 
         // numerocuenta y tipo de cuenta
